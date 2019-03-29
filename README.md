@@ -1,5 +1,10 @@
 # FileManageSystem
 
+> 文件管理系统
+
+## TODO
+-[ ] 数据库存储信息
+-[ ] 文件查询
 
 
 ## QuickStart
