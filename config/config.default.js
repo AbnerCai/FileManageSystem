@@ -37,8 +37,8 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     uploadFilePath: path.join(appInfo.baseDir, 'app/public/upload/'),
-    // baseUrl: "http://file.abner.top/",
-    baseUrl: "http://127.0.0.1:7001/public/upload/",
+    baseUrl: "http://file.abner.top/public/upload/",
+    // baseUrl: "http://127.0.0.1:7001/public/upload/",
   };
 
   return {
