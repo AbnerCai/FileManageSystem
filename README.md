@@ -5,12 +5,13 @@
 ## V0.0.1
 - 文件上传，生成访问地址
 
+## V0.0.2
+- 支持 png、jpg 转 webp
+
 ## TODO
 - 占位图
 - 数据库存储信息
 - 文件查询
-- 支持 png 转 webp
-
 
 ## QuickStart
 
