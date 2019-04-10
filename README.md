@@ -12,6 +12,7 @@
 - 占位图
 - 数据库存储信息
 - 文件查询
+- MongoDB
 
 ## QuickStart
 
