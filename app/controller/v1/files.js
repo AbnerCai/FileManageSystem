@@ -3,6 +3,7 @@
 const Controller = require('egg').Controller;
 const fs = require('mz/fs');
 const path = require('path');
+const process = require('child_process');
 
 const uuidV1 = require('uuid/v1');
 const moment = require('moment');
@@ -33,22 +34,34 @@ module.exports = class extends Controller {
     let result = {};
     try {
       // 处理文件
-      console.log(newPath);
+      ctx.logger.info("文件存储路径: %s", newPath);
       try{
         fs.accessSync(newPath, fs.F_OK);
       } catch(e){
-        console.log("创建文件夹");
+        ctx.logger.info("创建文件夹");
         mkdirp.sync(newPath);
       }
 
       await fs.createReadStream(file.filepath).pipe(fs.createWriteStream(filePath));
+
+      // 执行 shell 命令
+      var command = `cd ${newPath} && cwebp -q 80 ${uid}.png -o ${uid}.webp`
+      await process.exec(command, function(error, stdout, stderr){
+        if (error !== null) {
+          ctx.logger.info('exec error: ' + error);
+        } else {
+          ctx.logger.info("stdout: " + stdout);
+        }
+      })
+
+      ctx.logger.info("shell 执行完毕");
 
       result.code = 20;
       result.msg = "上传文件成功";
       let data = {
         fileName: fileName,
         url: baseUrl + newFileName,
-        path: filePath,
+        // path: filePath,
         tag: tag,
         createTime: moment().format("YYYY-MM-DD HH:mm:ss"),
       };

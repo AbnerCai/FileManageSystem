@@ -9,4 +9,5 @@ module.exports = app => {
 
   router.post('/v1/file/upload', controller.v1.files.upload);
 
+  router.get('/v1/placeholder/:size', controller.v1.placeholder.index);
 };
