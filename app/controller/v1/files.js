@@ -52,7 +52,7 @@ module.exports = class extends Controller {
         } else {
           ctx.logger.info("stdout: " + stdout);
         }
-      })
+      });
 
       ctx.logger.info("shell 执行完毕");
 
@@ -65,7 +65,7 @@ module.exports = class extends Controller {
         tag: tag,
         createTime: moment().format("YYYY-MM-DD HH:mm:ss"),
       };
-      // TODO: 存储数据库
+      // TODO: 存储 MongoDB
       result.data = data;
     } catch(e) {
       result.code = 50;
