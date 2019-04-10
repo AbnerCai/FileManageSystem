@@ -45,7 +45,7 @@ module.exports = class extends Controller {
       await fs.createReadStream(file.filepath).pipe(fs.createWriteStream(filePath));
 
       // 执行 shell 命令
-      var command = `cd ${newPath} && cwebp -q 80 ${newFileName}.png -o ${uid}.webp`
+      var command = `cd ${newPath} && cwebp -q 80 ${newFileName} -o ${uid}.webp`
       await process.exec(command, function(error, stdout, stderr){
         if (error !== null) {
           ctx.logger.info('exec error: ' + error);
